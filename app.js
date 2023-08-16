@@ -2,7 +2,10 @@ require('dotenv').config()
 const express = require('express');
 const app = express();
 const path = require('path')
-let ejs = require('ejs');
+const methodOverride = require('method-override')
+const bodyParser = require('body-parser')
+
+app.use(bodyParser.json())
 
 // Set the view engine to ejs
 app.set('view engine', 'ejs');
@@ -22,6 +25,18 @@ app.get('/test-ejs2', (req, res) => {
     res.render('./pages/users.ejs', {
         users : ['Bob', 'John', 'Jane' ]
       });
+})
+
+app.get('/ex7', (req, res) => {
+    res.render('./pages/form.ejs');
+})
+
+app.post('/showPost', (req, res) => {
+    // console.log(req.params)
+    console.log(req.body)
+    // console.log(req.query)
+    console.log(req.method)
+    res.send("Working")
 })
 
 app.listen(port,()=>{
