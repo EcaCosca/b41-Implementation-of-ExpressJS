@@ -7,7 +7,7 @@ const port = process.env.PORT || 3000
 
 app.route('/')
 .get((req, res)=>{res.send("Welcome!")})
-.put((req, res) => {res.sendFile(path.join(__dirname, 'index.html'));});
+.put((req, res) => {res.sendFile(path.join(__dirname, 'index.html'));})
 
 app.listen(port,()=>{
   console.log(`http://localhost:${port}/`);
