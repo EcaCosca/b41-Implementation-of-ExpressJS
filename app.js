@@ -50,6 +50,10 @@ app.get('/showGet', (req, res) => {
     res.send("Working")
 })
 
+app.get('/number/:id', (req, res) => {
+    res.send(`The number is ${req.params.id}`);
+})
+
 app.listen(port,()=>{
   console.log(`http://localhost:${port}/`);
 });
