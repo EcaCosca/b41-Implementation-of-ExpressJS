@@ -39,6 +39,17 @@ app.post('/showPost', (req, res) => {
     res.send("Working")
 })
 
+app.get('/ex8', (req, res) => {
+    res.render('./pages/formGet.ejs');
+})
+
+app.get('/showGet', (req, res) => {
+    console.log(req.body)
+    console.log(req.query)
+    console.log(req.method)
+    res.send("Working")
+})
+
 app.listen(port,()=>{
   console.log(`http://localhost:${port}/`);
 });
