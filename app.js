@@ -4,6 +4,7 @@ const app = express();
 const path = require('path')
 const methodOverride = require('method-override')
 const bodyParser = require('body-parser')
+const axios = require('axios')
 
 app.use(bodyParser.json())
 
@@ -53,6 +54,15 @@ app.get('/showGet', (req, res) => {
 app.get('/number/:id', (req, res) => {
     res.send(`The number is ${req.params.id}`);
 })
+
+// Add Axios to your project et create a GET request on http://jsonplaceholder.typicode.com/posts/1 when the user visits http://localhost:3000/postlist.
+app.get('/postlist', (req, res) => {
+    axios.get('http://jsonplaceholder.typicode.com/posts/1')
+    .then(response => res.json(response.data))
+    .catch(err => console.log(err))
+    // res.send(`The number is ${req.params.id}`);
+})
+
 
 app.listen(port,()=>{
   console.log(`http://localhost:${port}/`);
